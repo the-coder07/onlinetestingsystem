@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <style>
+        body{
+            color: green;
+            background-color: black;
+            align-content: center;
+            padding: 150px;
+            padding-top: 200px;
+            padding-left: 500px;
+        }
+        a{
+            text-decoration: none;
+            padding-left: 75px;
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome {{realname}} To Home Page</h1>
+    <div class="menu">
+        <!--Menu for Admin-->
+        {% if request.session.role == "ADMIN"%}
+        <a href="http://localhost:8000/OTS/new-question/">New Question</a>
+        <a href="http://localhost:8000/OTS/view-questions/">View Questions</a>
+        <a href="http://localhost:8000/OTS/studenthistory">Student History</a>
+        {% endif %}
+        <!--Menu for learner-->
+        {% if request.session.role == "LEARNER" %}
+        <a href="http://localhost:8000/OTS/logout/">Logout</a>
+        <a href="http://localhost:8000/OTS/start-test">Start Test</a>
+        <a href="http://localhost:8000/OTS/history?user={{realname}}">History</a>
+        {%endif%}
+    </div>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>History</title>
+    <style>
+        body{
+            color: green;
+            background-color: black;
+                        
+        }
+    </style>
+</head>
+<body>
+    <h1>Hi ,{{realname}} Test History is :</h1>
+    <div class="menu">
+    <a href="http://localhost:8000/OTS/logout/">Logout</a>
+        <table>
+            <tr>
+                <th>Date and Time</th>
+                <th>user</th>
+                <th>Score</th>
+                
+            </tr>
+            
+    {% for history in history %}
+    <tr>
+        
+        <td>{{history.date}}</td>
+        <td>{{history.user}}</td>
+        <td>{{history.score}}</td>
+      
+    
+    </tr>
+    {% endfor %}        
+    </table>
+    </div>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Registration</title>
+    <link rel="stylesheet" href="">
+    <script src="{% static 'JS/signupajax.js'%}"></script>
+    <style>
+        body{
+            color: green;
+            background-color: black;
+            align-content: center;
+            padding: 150px;
+            padding-top: 200px;
+            padding-left: 600px;
+        }
+        
+    </style>
+</head>
+<body >
+    <h1 >User Registration</h1>
+    <form action="http://localhost:8000/OTS/save-user/" method="post">
+        {%csrf_token%}
+        <table>
+            <tr>
+                <td>Username</td>
+                <td><input type="text" name="username" autocomplete="off" onkeyup="checkName(this.value)" ></td>
+                <td id="demo"></td>
+            </tr>
+            <tr>
+                <td>Password</td>
+                <td><input type="password" name="password"></td>
+            </tr>
+            <tr>
+                <td>Real name</td>
+                <td><input type="text" name="realname"></td>
+            </tr>
+            <tr>
+                <td>Role</td>
+                <td><input type="text" name="role" value="LEARNER"></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><input type="submit" value="Register"></td>
+            </tr>
+         
+        </table>
+
+    </form>
+    <p>{{errmsg}}</p>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Result</title>
+    <style>
+        body{
+            color: green;
+            background-color: black;
+            padding: 150px;
+            padding-top: 200px;
+            padding-left: 650px;
+                        
+        }
+        a{
+            text-decoration: none;
+            color: red;
+            
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="menu">
+        <!--Menu for Admin-->
+        {% if request.session.role == "ADMIN"%}
+        <a href="http://localhost:8000/OTS/new-question/">New Question</a>
+        <a href="http://localhost:8000/OTS/view-questions/">View Questions</a>
+        {% endif %}
+        <!--Menu for learner-->
+        {% if request.session.role == "LEARNER" %}
+        <a href="http://localhost:8000/OTS/start-test">Start Test</a>
+        <a href="http://localhost:8000/OTS/history?user={{realname}}">History</a>
+        {%endif%}
+        <a href="http://localhost:8000/OTS/logout/">Logout</a>
+        
+        
+        
+    </div>
+    <h1>Test Result</h1>
+    <table>
+        <tr>
+            <th>Total attempts</th>
+            <td>{{total_attempt}}</td>
+        </tr>
+        <tr>
+            <th>Total Right</th>
+            <td>{{total_right}}</td>
+        </tr>
+        <tr>
+            <th>Total wrong</th>
+            <td>{{total_wrong}}</td>
+        </tr>
+    </table>
+</body>
+</html>
